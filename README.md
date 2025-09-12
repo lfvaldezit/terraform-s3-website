@@ -62,15 +62,15 @@
     │   └── cloudfront/            
     │       ├── main.tf
     │       ├── variables.tf
-    │       └──  output.tf     
+    │       └── output.tf     
     │   └── iam/ 
     │       ├── main.tf
     │       ├── variables.tf
-    │       └──  output.tf          
+    │       └── output.tf          
     │   └── s3/ 
     │       ├── main.tf
     │       ├── variables.tf
-    │       └──  output.tf    
+    │       └── output.tf    
     ├── locals.tf                   # Module locals
     ├── variables.tf                # Input variables
     └── terraform.example.tfvars   # Set up variables
