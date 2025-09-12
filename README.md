@@ -73,7 +73,7 @@
     │       └──  output.tf    
     ├── locals.tf                   # Module locals
     ├── variables.tf                # Input variables
-    └──  terraform.example.tfvars   # Set up variables
+    └── terraform.example.tfvars   # Set up variables
     ```
 
 ## ⚙️ Configuration
