@@ -94,4 +94,4 @@
 | `aws_region` | AWS region for all resources | `map(string)` | us-east-1 | **Yes** |
 | `Owner` | Person or team responsible | `string` | User | **No** |
 | `Environment` | Lifecycle stage | `string` | Dev | **No** |
-| `ManagedBy` | Tool that created the resource| `string` | Terraform | **No** |
+| `ManagedBy` | Tool that created the resource | `string` | Terraform | **No** |
