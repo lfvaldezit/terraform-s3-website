@@ -10,16 +10,16 @@
 
 1. **Clone the repository**
 
-    ```bash
-    git clone <your-repo-url>
-    cd terraform-s3-website
-    ```
+ ```bash
+ git clone <your-repo-url>
+ cd terraform-s3-website
+ ```
 
 2. **Configure AWS credentials**
 
-   ```bash
-   aws configure
-   ```
+ ```bash
+ aws configure
+ ```
 
 3. **Set up variables**
 
@@ -55,29 +55,29 @@ terraform init
 
 ## 📁 Project Structure
 
-   ```
-    ├── main.tf                     # Root configuration calling modules
-    ├── outputs.tf                  # Module Outputs
-    ├── versions.tf                 # Terraform and provider version constraints
-    ├── providers.tf                # AWS provider configuration
-    ├── static-site                 # Folder containing static website files
-    ├── modules/                    # Reusable modules
-    │   └── cloudfront/            
-    │   │   ├── main.tf
-    │   │   ├── variables.tf
-    │   │   └── output.tf     
-    │   └── iam/ 
-    │   │    ├── main.tf
-    │   │    ├── variables.tf
-    │   │    └── output.tf          
-    │   └── s3/ 
-    │        ├── main.tf
-    │        ├── variables.tf
-    │        └── output.tf    
-    ├── locals.tf                   # Local variables
-    ├── variables.tf                # Input variables
-    └── terraform.example.tfvars    # Example variables files 
-   ```
+```
+ ├── main.tf                     # Root configuration calling modules
+ ├── outputs.tf                  # Module Outputs
+ ├── versions.tf                 # Terraform and provider version constraints
+ ├── providers.tf                # AWS provider configuration
+ ├── static-site                 # Folder containing static website files
+ ├── modules/                    # Reusable modules
+ │   └── cloudfront/            
+ │   │   ├── main.tf
+ │   │   ├── variables.tf
+ │   │   └── output.tf     
+ │   └── iam/ 
+ │   │    ├── main.tf
+ │   │    ├── variables.tf
+ │   │    └── output.tf          
+ │   └── s3/ 
+ │        ├── main.tf
+ │        ├── variables.tf
+ │        └── output.tf    
+ ├── locals.tf                   # Local variables
+ ├── variables.tf                # Input variables
+ └── terraform.example.tfvars    # Example variables files 
+```
 
 ## ⚙️ Configuration
 
@@ -98,3 +98,7 @@ terraform init
 | `Owner` | Person or team responsible | `string` | User | **No** |
 | `Environment` | Lifecycle stage | `string` | Dev | **No** |
 | `ManagedBy` | Tool that created the resource | `string` | Terraform | **No** |
+
+## 📊 Output
+
+* CloudFront distribution URL
