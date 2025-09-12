@@ -48,11 +48,9 @@
     ## 📁 Project Structure
 
     ```
-    ├── locals.tf                   # Module locals
+  
     ├── main.tf                     # Main configuration calling the static_site module
     ├── outputs.tf                  # Module Outputs
-    ├── variables.tf                # Input variables
-    ├── terraform.example.tfvars    # Set up variables
     ├── versions.tf                 # Terraform and provider version constraints
     ├── providers.tf                # AWS provider configuration
     ├── static-site                 # Folder where to upload static site
@@ -60,14 +58,16 @@
     │   └── cloudfront/            
     │       ├── main.tf
     │       ├── variables.tf
-    │       ├── output.tf     
+    │       └──  output.tf     
     │   └── iam/ 
     │       ├── main.tf
     │       ├── variables.tf
-    │       ├── output.tf          
+    │       └──  output.tf          
     │   └── s3/ 
     │       ├── main.tf
     │       ├── variables.tf
-    │       ├── output.tf    
-
+    │       └──  output.tf    
+    ├── locals.tf                   # Module locals
+    ├── variables.tf                # Input variables
+    └──  terraform.example.tfvars   # Set up variables
     ```
