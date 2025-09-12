@@ -41,7 +41,7 @@
    terraform plan -var-file terraform.tfvars
    ```
 
-6. **PApply the infrastructure**
+6. **Apply the infrastructure**
 
    ```bash
    terraform apply -var-file terraform.tfvars
@@ -50,7 +50,7 @@
 7. **Access website**
     After deployment, Terraform will output the CloudFront distribution URL
 
-    ## 📁 Project Structure
+## 📁 Project Structure
 
     ```
     ├── main.tf                     # Main configuration calling the static_site module
