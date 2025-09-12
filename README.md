@@ -52,28 +52,28 @@
 
 ## 📁 Project Structure
 
-    ```bash
-    ├── main.tf                     # Main configuration calling the static_site module
-    ├── outputs.tf                  # Module Outputs
-    ├── versions.tf                 # Terraform and provider version constraints
-    ├── providers.tf                # AWS provider configuration
-    ├── static-site                 # Folder where to upload static site
-    ├── modules/                    # Reusable modules
-    │   └── cloudfront/            
-    │       ├── main.tf
-    │       ├── variables.tf
-    │       └── output.tf     
-    │   └── iam/ 
-    │       ├── main.tf
-    │       ├── variables.tf
-    │       └── output.tf          
-    │   └── s3/ 
-    │       ├── main.tf
-    │       ├── variables.tf
-    │       └── output.tf    
-    ├── locals.tf                   # Module locals
-    ├── variables.tf                # Input variables
-    └── terraform.example.tfvars   # Set up variables
+    ```
+      ├── main.tf                     # Main configuration calling the static_site module
+      ├── outputs.tf                  # Module Outputs
+      ├── versions.tf                 # Terraform and provider version constraints
+      ├── providers.tf                # AWS provider configuration
+      ├── static-site                 # Folder where to upload static site
+      ├── modules/                    # Reusable modules
+      │   └── cloudfront/            
+      │       ├── main.tf
+      │       ├── variables.tf
+      │       └── output.tf     
+      │   └── iam/ 
+      │       ├── main.tf
+      │       ├── variables.tf
+      │       └── output.tf          
+      │   └── s3/ 
+      │       ├── main.tf
+      │       ├── variables.tf
+      │       └── output.tf    
+      ├── locals.tf                   # Module locals
+      ├── variables.tf                # Input variables
+      └── terraform.example.tfvars   # Set up variables
     ```
 
 ## ⚙️ Configuration
