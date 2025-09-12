@@ -55,7 +55,7 @@
 
 ## 📁 Project Structure
 
-```
+   ```
     ├── main.tf                     # Root configuration calling modules
     ├── outputs.tf                  # Module Outputs
     ├── versions.tf                 # Terraform and provider version constraints
@@ -77,7 +77,7 @@
     ├── locals.tf                   # Local variables
     ├── variables.tf                # Input variables
     └── terraform.example.tfvars    # Example variables files 
-```
+   ```
 
 ## ⚙️ Configuration
 
