@@ -90,7 +90,7 @@
 
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `profile` | Shortcut that store your login | `string` | none | **Yes** |
+| `profile` | Shortcut that store your login | `string` | default | **Yes** |
 | `aws_region` | AWS region for all resources | `map(string)` | us-east-1 | **Yes** |
 | `Owner` | Person or team responsible | `string` | User | **No** |
 | `Environment` | Lifecycle stage | `string` | Dev | **No** |
