@@ -52,7 +52,7 @@
 
 ## 📁 Project Structure
 
-    ```
+    ```bash
     ├── main.tf                     # Main configuration calling the static_site module
     ├── outputs.tf                  # Module Outputs
     ├── versions.tf                 # Terraform and provider version constraints
