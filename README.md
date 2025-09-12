@@ -2,9 +2,9 @@
 
 ## 🌐 Stack Overview
 
-* **AWS S3**: Secure storage for static site files
-* **AWS CloudFront**: Global Content Discovery Network
-* **IAM Policy**: Permission for access from CloudFront to S3
+* **AWS S3**: Storage for static site files
+* **AWS CloudFront**: Global Content Discovery Network (CDN)
+* **IAM Policy**: Grants CloudFront access to S3
 
 ## 🚀 Quick start
 
