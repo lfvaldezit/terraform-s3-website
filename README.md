@@ -23,35 +23,35 @@
 
 3. **Set up variables**
 
-   ```
-   Copy the content of terraform.tfvars.example
-   Create your own terraform.tfvars file and adjust the values
-   Update local.tf variables as needed
-   ```
+ ```
+ Copy the content of terraform.tfvars.example
+ Create your own terraform.tfvars file and adjust the values
+ Update local.tf variables as needed
+ ```
 
 4. **Initialize Terraform**
 
-   ```bash
-   terraform init
-   ```
+```bash
+terraform init
+```
 
 5. **Plan the deployment**
 
-   ```bash
-   terraform plan -var-file terraform.tfvars
-   ```
+ ```bash
+ terraform plan -var-file terraform.tfvars
+ ```
 
 6. **Apply the infrastructure**
 
-   ```bash
-   terraform apply -var-file terraform.tfvars
-   ```
+ ```bash
+ terraform apply -var-file terraform.tfvars
+ ```
 
 7. **Access website**
 
-   ```
-    After deployment, Terraform will output the CloudFront distribution URL
-   ```
+ ```
+ After deployment, Terraform will output the CloudFront distribution URL
+  ```
 
 ## 📁 Project Structure
 
