@@ -71,3 +71,14 @@
     ├── variables.tf                # Input variables
     └──  terraform.example.tfvars   # Set up variables
     ```
+
+
+## ⚙️ Configuration
+
+### Variables
+
+| Variable     | Description                  | Type     | Default     | Required |
+| ------------ | ---------------------------- | -------- | ----------- | -------- |
+| `bucket_name` | Globally unique S3 bucket name | `string` | none | **Yes** |
+| `s3_tags` | S3 bucket tags | `map(string)` | None | **Yes** |
+| `website_folder` | Folder containing website | `string` | static-site | **Yes** |
