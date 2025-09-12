@@ -63,17 +63,17 @@
     ├── static-site                 # Folder containing static website files
     ├── modules/                    # Reusable modules
     │   └── cloudfront/            
-    │       ├── main.tf
-    │       ├── variables.tf
-    │       └── output.tf     
+    │   │   ├── main.tf
+    │   │   ├── variables.tf
+    │   │   └── output.tf     
     │   └── iam/ 
-    │       ├── main.tf
-    │       ├── variables.tf
-    │       └── output.tf          
+    │   │    ├── main.tf
+    │   │    ├── variables.tf
+    │   │    └── output.tf          
     │   └── s3/ 
-    │       ├── main.tf
-    │       ├── variables.tf
-    │       └── output.tf    
+    │        ├── main.tf
+    │        ├── variables.tf
+    │        └── output.tf    
     ├── locals.tf                   # Local variables
     ├── variables.tf                # Input variables
     └── terraform.example.tfvars    # Example variables files 
