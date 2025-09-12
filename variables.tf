@@ -8,10 +8,10 @@ variable "s3_tags" {
   description = "The tags of the S3 bucket"
 }
 
-# variable "cfn_tags" {
-#   type = map(string)
-#   description = "The tags of the CloudFront Distribution"
-# }
+variable "cfn_tags" {
+  type = map(string)
+  description = "The tags of the CloudFront Distribution"
+}
 
 variable "website_folder" {
   type        = string
