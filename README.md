@@ -35,20 +35,24 @@
    terraform init
    ```
 
-5. **Plan & Apply the infrastructure**
+5. **Plan the deployment**
 
    ```bash
    terraform plan -var-file terraform.tfvars
+   ```
+
+6. **PApply the infrastructure**
+
+   ```bash
    terraform apply -var-file terraform.tfvars
    ```
 
-6. **Access website**
+7. **Access website**
     After deployment, Terraform will output the CloudFront distribution URL
 
     ## 📁 Project Structure
 
     ```
-  
     ├── main.tf                     # Main configuration calling the static_site module
     ├── outputs.tf                  # Module Outputs
     ├── versions.tf                 # Terraform and provider version constraints
@@ -72,7 +76,6 @@
     └──  terraform.example.tfvars   # Set up variables
     ```
 
-
 ## ⚙️ Configuration
 
 ### Variables
@@ -82,3 +85,13 @@
 | `bucket_name` | Globally unique S3 bucket name | `string` | none | **Yes** |
 | `s3_tags` | S3 bucket tags | `map(string)` | None | **Yes** |
 | `website_folder` | Folder containing website | `string` | static-site | **Yes** |
+
+### Locals
+
+| Variable     | Description                  | Type     | Default     | Required |
+| ------------ | ---------------------------- | -------- | ----------- | -------- |
+| `profile` | Shortcut that store your login | `string` | none | **Yes** |
+| `aws_region` | AWS region for all resources | `map(string)` | us-east-1 | **Yes** |
+| `Owner` | Person or team responsible | `string` | User | **No** |
+| `Environment` | Lifecycle stage | `string` | Dev | **No** |
+| `ManagedBy` | Tool that created the resource| `string` | Terraform | **No** |
