@@ -23,10 +23,10 @@
 
 3. **Set up variables**
 
-   ```bash
-   Copy terraform.tfvars.example content
-   # Edit your own terraform.tfvars with your own variables
-   # Change locals.tf variables with your own
+   ```
+   Copy the content of terraform.tfvars.example
+   Create your own terraform.tfvars file and adjust the values
+   Update local.tf variables as needed
    ```
 
 4. **Initialize Terraform**
@@ -48,16 +48,19 @@
    ```
 
 7. **Access website**
+
+   ```
     After deployment, Terraform will output the CloudFront distribution URL
+   ```
 
 ## 📁 Project Structure
 
 ```
-    ├── main.tf                     # Main configuration calling the static_site module
+    ├── main.tf                     # Root configuration calling modules
     ├── outputs.tf                  # Module Outputs
     ├── versions.tf                 # Terraform and provider version constraints
     ├── providers.tf                # AWS provider configuration
-    ├── static-site                 # Folder where to upload static site
+    ├── static-site                 # Folder containing static website files
     ├── modules/                    # Reusable modules
     │   └── cloudfront/            
     │       ├── main.tf
@@ -71,9 +74,9 @@
     │       ├── main.tf
     │       ├── variables.tf
     │       └── output.tf    
-    ├── locals.tf                   # Module locals
+    ├── locals.tf                   # Local variables
     ├── variables.tf                # Input variables
-    └── terraform.example.tfvars   # Set up variables
+    └── terraform.example.tfvars    # Example variables files 
 ```
 
 ## ⚙️ Configuration
@@ -84,13 +87,13 @@
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
 | `bucket_name` | Globally unique S3 bucket name | `string` | none | **Yes** |
 | `s3_tags` | S3 bucket tags | `map(string)` | None | **Yes** |
-| `website_folder` | Folder containing website | `string` | static-site | **Yes** |
+| `website_folder` | Folder containing the website | `string` | static-site/ | **Yes** |
 
 ### Locals
 
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `profile` | Shortcut that store your login | `string` | default | **Yes** |
+| `profile` | AWS CLI profile to use | `string` | default | **Yes** |
 | `aws_region` | AWS region for all resources | `map(string)` | us-east-1 | **Yes** |
 | `Owner` | Person or team responsible | `string` | User | **No** |
 | `Environment` | Lifecycle stage | `string` | Dev | **No** |
