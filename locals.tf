@@ -3,9 +3,9 @@ locals {
   aws_region = "us-east-1"
 
   common_tags = {
-    Owner : "User"
-    Environment : "Dev"
-    ManagedBy : "Terraform"
+    Owner : "" # iamUser | example@example.com | TeamA 
+    Environment : "" # Dev | Test | Prod 
+    ManagedBy : "Terraform" 
   }
 
 }
