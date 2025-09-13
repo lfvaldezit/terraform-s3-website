@@ -3,7 +3,7 @@
 ## 🌐 Stack Overview
 
 * **AWS S3**: Storage for static site files
-* **AWS CloudFront**: Global Content Discovery Network (CDN)
+* **AWS CloudFront**: Global Content Delivery Network (CDN)
 * **IAM Policy**: Grants CloudFront access to S3
 
 ## 🚀 Quick start
@@ -24,9 +24,9 @@
 3. **Set up variables**
 
  ```
- Copy the content of terraform.tfvars.example
+ Copy the content ofs terraform.tfvars.example
  Create your own terraform.tfvars file and adjust the values
- Update local.tf variables as needed
+ Update the variables locals.tf as needed
  ```
 
 4. **Initialize Terraform**
@@ -47,7 +47,7 @@ terraform init
  terraform apply -var-file terraform.tfvars
  ```
 
-7. **Access website**
+7. **Access the website**
 
  ```
  After deployment, Terraform will output the CloudFront distribution URL
@@ -65,18 +65,18 @@ terraform init
  │   └── cloudfront/            
  │   │   ├── main.tf
  │   │   ├── variables.tf
- │   │   └── output.tf     
+ │   │   └── outputs.tf     
  │   └── iam/ 
  │   │    ├── main.tf
  │   │    ├── variables.tf
- │   │    └── output.tf          
+ │   │    └── outputs.tf          
  │   └── s3/ 
  │        ├── main.tf
  │        ├── variables.tf
- │        └── output.tf    
+ │        └── outputs.tf    
  ├── locals.tf                   # Local variables
  ├── variables.tf                # Input variables
- └── terraform.example.tfvars    # Example variables files 
+ └── terraform.example.tfvars    # Example variables file
 ```
 
 ## ⚙️ Configuration
