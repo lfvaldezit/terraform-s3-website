@@ -95,10 +95,9 @@ terraform init
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
 | `profile` | AWS CLI profile to use | `string` | default | **Yes** |
-| `aws_region` | AWS region for all resources | `map(string)` | us-east-1 | **Yes** |
-| `Owner` | Person or team responsible | `string` | User | **No** |
-| `Environment` | Lifecycle stage | `string` | Dev | **No** |
-| `ManagedBy` | Tool that created the resource | `string` | Terraform | **No** |
+| `aws_region` | AWS region for all resources | `(string)` | us-east-1 | **Yes** |
+| `common_tags` | Common tags for all resources | `map(string)` | None | **No** |
+
 
 ## 📊 Output
 
