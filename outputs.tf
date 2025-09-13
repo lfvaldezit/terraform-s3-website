@@ -6,6 +6,6 @@
 #   value = module.s3.s3_website_endpoint
 # }
 
-output "domain_name" {
-  value = module.cfn.domain_name
+output "cfn_domain_name" {
+  value = module.cfn.cfn_domain_name
 }
