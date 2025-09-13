@@ -88,7 +88,7 @@ terraform init
 | `bucket_name` | Globally unique S3 bucket name | `string` | none | **Yes** |
 | `s3_tags` | S3 bucket tags | `map(string)` | None | **Yes** |
 | `cfn_tags` | CloudFront tags | `map(string)` | None | **Yes** |
-| `website_folder` | Folder containing the website | `string` | static-site/ | **Yes** |
+| `website_folder` | Folder containing the website | `string` | static-site | **Yes** |
 
 ### Locals
 
