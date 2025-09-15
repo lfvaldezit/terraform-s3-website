@@ -18,13 +18,3 @@ variable "record_content" {
   description = "The content of the record"
   type = string
 }
-
-variable "record_ttl" {
-  description = "Time to live of the record"
-  type = string
-  default = "3600"
-}
-
-variable "account_id" {
-  type = string
-}
