@@ -1,9 +1,6 @@
-resource "aws_route53_zone" "this" {
-  name = var.zone_name
-}
 
 resource "aws_acm_certificate" "this" {
-  domain_name       = aws_route53_zone.this.name
+  domain_name       = var.domain_name
   subject_alternative_names = var.subject_alternative_names
   validation_method = "DNS"
   tags = merge(var.acm_tags, var.common_tags)
