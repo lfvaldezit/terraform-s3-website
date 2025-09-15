@@ -6,11 +6,10 @@ variable "acm_tags"{
     type = map(string)
 }
 
-variable "subject_alternative_names" {
-  type = set(string)
+variable "common_tags" {
+  type = map(string)
 }
 
-variable "record_name_id" {
+variable "subject_alternative_names" {
   type = set(string)
-  default = ["A", "B"]
 }
