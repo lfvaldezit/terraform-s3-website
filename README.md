@@ -129,4 +129,4 @@ terraform init
 
 ## 📊 Output
 
-* CloudFront distribution URL
+* Set of domain validation objects which can be used to complete certificate validation.
