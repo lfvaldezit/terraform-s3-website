@@ -10,6 +10,15 @@ module "s3" {
   s3_tags        = var.s3_tags
 }
 
+# --------------- ACM--------------- #
+
+module "acm"{
+  source = "./modules/acm"
+  zone_name = local.domain_name
+  acm_tags = var.acm_tags
+  subject_alternative_names = [ "*.${local.domain_name}"]
+}
+
 #--------------- CloudFront --------------- #
 
 module "cfn" {
@@ -17,7 +26,10 @@ module "cfn" {
   domain_name = module.s3.s3_bucket_regional_domain_name
   name-oac    = "${module.s3.s3_bucket_name}-oac"
   common_tags = local.common_tags
-  cfn_tags = var.cfn_tags
+  cfn_tags    = var.cfn_tags
+  aliases = var.aliases
+  aws_acm_certificate_arn = module.acm.acm_certificate_arn
+  depends_on = [ module.acm ]
 
 }
 
@@ -28,4 +40,16 @@ module "iam" {
   aws_s3_bucket_id    = module.s3.s3_bucket_id
   aws_s3_bucket_arn   = module.s3.s3_bucket_arn
   cloudfront_dist_arn = module.cfn.cfn_dist_arn
+}
+
+#--------------- CloudFlare Record--------------- #
+
+module "www" {
+  source  = "./modules/cloudflare"
+  zone_id = var.cloudflare_zone_id
+  record_name    = var.record_name
+  record_content = module.cfn.cfn_domain_name
+  account_id = var.cloudflare_account_id
+  record_ttl = var.record_ttl
+
 }

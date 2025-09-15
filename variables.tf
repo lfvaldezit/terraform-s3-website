@@ -1,6 +1,8 @@
+#--------------- S3 Bucket --------------- #
+
 variable "bucket_name" {
-  type        = string
   description = "The name of the S3 bucket"
+  type        = string 
 }
 
 variable "s3_tags" {
@@ -8,12 +10,45 @@ variable "s3_tags" {
   description = "The tags of the S3 bucket"
 }
 
-variable "cfn_tags" {
-  type = map(string)
-  description = "The tags of the CloudFront Distribution"
-}
-
 variable "website_folder" {
   type        = string
   description = "The folder of the website"
+}
+
+#--------------- CloudFront --------------- #
+
+variable "cfn_tags" {
+  type        = map(string)
+  description = "The tags of the CloudFront Distribution"
+}
+
+variable "acm_tags" {
+  type = map(string)
+}
+
+variable "aliases" {
+  type = set(string)  
+}
+
+#--------------- CloudFlare --------------- #
+
+variable "cloudflare_api_token" {
+  description = "Generated API Token to access services and resources "
+  type = string
+}
+
+variable "cloudflare_zone_id" {
+  type = string
+}
+
+variable "record_name" {
+  type = string
+}
+
+variable "record_ttl" {
+  type = string
+}
+
+variable "cloudflare_account_id" {
+  type = string
 }

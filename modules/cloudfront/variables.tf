@@ -14,3 +14,11 @@ variable "common_tags" {
 variable "cfn_tags" {
   type = map(string)
 }
+
+variable "aliases" {
+  type = set(string)
+}
+
+variable "aws_acm_certificate_arn" {
+  type = string
+}

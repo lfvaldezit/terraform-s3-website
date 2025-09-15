@@ -4,6 +4,7 @@
 
 * **AWS S3**: Storage for static site files
 * **AWS CloudFront**: Global Content Delivery Network (CDN)
+* **CloudFlare**: Domain hosting for DNS records
 * **IAM Policy**: Grants CloudFront access to S3
 
 ## 🚀 Quick start
@@ -73,7 +74,11 @@ terraform init
  │   └── s3/ 
  │        ├── main.tf
  │        ├── variables.tf
- │        └── outputs.tf    
+ │        └── outputs.tf
+ │   └── cloudflare/ 
+ │        ├── main.tf
+ │        ├── variables.tf
+ │        └── outputs.tf  
  ├── locals.tf                   # Local variables
  ├── variables.tf                # Input variables
  └── terraform.example.tfvars    # Example variables file
