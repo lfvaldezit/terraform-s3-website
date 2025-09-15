@@ -113,6 +113,15 @@ terraform init
 | `record_name` | The name of the record | `string` | None | **Yes** |
 | `record_content` | The content of the record | `string` | None | **Yes** |
 
+4. **Locals**
+
+| Variable     | Description                  | Type     | Default     | Required |
+| ------------ | ---------------------------- | -------- | ----------- | -------- |
+| `profile` | Allows you to store and manage AWS credentials | `string` | default | **Yes** |
+| `domain_name` | The name of the hosted zone | `string` | example.com | **Yes** |
+| `aws_region` | AWS Region where the provider will operate | `map(string)` | us-east-1 | **Yes** |
+| `common_tags` | Common tags for all resources | `string` |  | **No** |
+
 
 ## 📊 Output
 
