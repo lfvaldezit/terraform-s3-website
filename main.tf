@@ -14,10 +14,10 @@ module "s3" {
 
 module "acm"{
   source = "./modules/acm"
-  zone_name = local.domain_name
+  domain_name = local.domain_name
   acm_tags = var.acm_tags
   common_tags = local.common_tags
-  subject_alternative_names = [ "*.${local.domain_name}", local.domain_name]
+  subject_alternative_names = [ "*.${local.domain_name}"]
 }
 
 #--------------- CloudFront --------------- #
