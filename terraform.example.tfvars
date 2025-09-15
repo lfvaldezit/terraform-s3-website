@@ -1,11 +1,27 @@
-bucket_name    = "terraform-website"
+#--------------- S3 Bucket --------------- #
+
+bucket_name    = ""
 website_folder = "static-website/"
-
 s3_tags = {
-  BucketType : "StaticWebsite"
+  Default = ""
 }
 
+#--------------- CloudFront --------------- #
+
+aliases = [""]
 cfn_tags = {
-  Name : "Static-website-cfn"
+  Default = ""
 }
+
+#--------------- ACM --------------- #
+
+acm_tags = {
+  Default: ""
+}
+
+#--------------- CloudFlare --------------- #
+
+api_token = ""
+zone_id   = ""
+record_name      = ""
 
