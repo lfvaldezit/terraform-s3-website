@@ -46,10 +46,7 @@ module "iam" {
 
 module "www" {
   source  = "./modules/cloudflare"
-  zone_id = var.cloudflare_zone_id
+  zone_id = var.zone_id
   record_name    = var.record_name
   record_content = module.cfn.cfn_domain_name
-  account_id = var.cloudflare_account_id
-  record_ttl = var.record_ttl
-
 }

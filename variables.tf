@@ -32,23 +32,15 @@ variable "aliases" {
 
 #--------------- CloudFlare --------------- #
 
-variable "cloudflare_api_token" {
+variable "api_token" {
   description = "Generated API Token to access services and resources "
   type = string
 }
 
-variable "cloudflare_zone_id" {
+variable "zone_id" {
   type = string
 }
 
 variable "record_name" {
-  type = string
-}
-
-variable "record_ttl" {
-  type = string
-}
-
-variable "cloudflare_account_id" {
   type = string
 }
