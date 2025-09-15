@@ -16,7 +16,8 @@ module "acm"{
   source = "./modules/acm"
   zone_name = local.domain_name
   acm_tags = var.acm_tags
-  subject_alternative_names = [ "*.${local.domain_name}"]
+  common_tags = local.common_tags
+  subject_alternative_names = [ "*.${local.domain_name}", local.domain_name]
 }
 
 #--------------- CloudFront --------------- #
@@ -27,7 +28,7 @@ module "cfn" {
   name-oac    = "${module.s3.s3_bucket_name}-oac"
   common_tags = local.common_tags
   cfn_tags    = var.cfn_tags
-  aliases = var.aliases
+  aliases = [ "www.${local.domain_name}", local.domain_name]
   aws_acm_certificate_arn = module.acm.acm_certificate_arn
   depends_on = [ module.acm ]
 
