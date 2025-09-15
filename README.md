@@ -88,20 +88,30 @@ terraform init
 
 ### Variables
 
+1. **S3**
+
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
 | `bucket_name` | Globally unique S3 bucket name | `string` | none | **Yes** |
-| `s3_tags` | S3 bucket tags | `map(string)` | None | **Yes** |
-| `cfn_tags` | CloudFront tags | `map(string)` | None | **Yes** |
-| `website_folder` | Folder containing the website | `string` | static-site | **Yes** |
+| `s3_tags` | S3 bucket tags | `map(string)` | default | **No** |
+| `website_folder` | Folder containing the website | `string` | static-website/ | **Yes** |
 
-### Locals
+2. **CloudFront**
 
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `profile` | AWS CLI profile to use | `string` | default | **Yes** |
-| `aws_region` | AWS region for all resources | `(string)` | us-east-1 | **Yes** |
-| `common_tags` | Common tags for all resources | `map(string)` | None | **No** |
+| `aliases` | Extra CNAMEs (alternate domain names) | `set(string)` | default | **Yes** |
+| `cfn_tags` | CloudFront bucket tags | `map(string)` | default | **No** |
+
+
+3. **CloudFlare**
+
+| Variable     | Description                  | Type     | Default     | Required |
+| ------------ | ---------------------------- | -------- | ----------- | -------- |
+| `api_token`| The API Token for operations | `string` | None | **Yes** |
+| `zone_id` | The zone identifier to target for the resource | `string` | None | **Yes** |
+| `record_name` | The name of the record | `string` | None | **Yes** |
+| `record_content` | The content of the record | `string` | None | **Yes** |
 
 
 ## 📊 Output
