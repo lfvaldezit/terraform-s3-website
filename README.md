@@ -79,6 +79,10 @@ terraform init
  │        ├── main.tf
  │        ├── variables.tf
  │        └── outputs.tf  
+ │   └── acm/ 
+ │        ├── main.tf
+ │        ├── variables.tf
+ │        └── outputs.tf 
  ├── locals.tf                   # Local variables
  ├── variables.tf                # Input variables
  └── terraform.example.tfvars    # Example variables file
