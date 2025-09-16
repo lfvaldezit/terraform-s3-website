@@ -1,18 +1,12 @@
 # Terraform Module for S3 Static Website + CloudFront
 
 ## 🌐 Stack Overview
-<img width="691" height="421" alt="image" src="https://github.com/user-attachments/assets/46067c23-e191-4a5e-9207-f94dbda8d6d3" />
 
-<<<<<<< HEAD
   <img width="691" height="421" alt="image" src="terraform-website\image.png" />
 
 * **AWS S3**: Storage for static site files
 * **AWS CloudFront**: Global Content Delivery Network (CDN)
 * **AWS Certificate Manager**: Deploy public SSL/TLS certificate
-=======
-* **S3**: Storage for static site files
-* **CloudFront**: Global Content Delivery Network (CDN)
->>>>>>> 6547809b59848f4bf338458fc10683e9e4e22462
 * **CloudFlare**: Domain hosting for DNS records
 * **IAM Policy**: Grants CloudFront access to S3
 
