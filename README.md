@@ -2,7 +2,9 @@
 
 ## 🌐 Stack Overview
 
-* **AWS S3**: Storage for static site files
+* **AWS<img width="691" height="421" alt="image" src="https://github.com/user-attachments/assets/46067c23-e191-4a5e-9207-f94dbda8d6d3" />
+
+ S3**: Storage for static site files
 * **AWS CloudFront**: Global Content Delivery Network (CDN)
 * **CloudFlare**: Domain hosting for DNS records
 * **IAM Policy**: Grants CloudFront access to S3
