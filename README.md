@@ -2,7 +2,7 @@
 
 ## 🌐 Stack Overview
 
-  <img width="691" height="421" alt="image" src="https://github.com/lfvaldezit/terraform-s3-website/blob/main/image.png" />
+  <img width="700" height="421" alt="image" src="https://github.com/lfvaldezit/terraform-s3-website/blob/main/image.png" />
 
 * **AWS S3**: Storage for static site files
 * **AWS CloudFront**: Global Content Delivery Network (CDN)
