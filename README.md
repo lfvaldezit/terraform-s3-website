@@ -2,8 +2,11 @@
 
 ## 🌐 Stack Overview
 
+  <img width="691" height="421" alt="image" src="terraform-website\image.png" />
+
 * **AWS S3**: Storage for static site files
 * **AWS CloudFront**: Global Content Delivery Network (CDN)
+* **AWS Certificate Manager**: Deploy public SSL/TLS certificate
 * **CloudFlare**: Domain hosting for DNS records
 * **IAM Policy**: Grants CloudFront access to S3
 
@@ -127,6 +130,7 @@ terraform init
 | `common_tags` | Common tags for all resources | `string` |  | **No** |
 
 
-## 📊 Output
+## 📊 Outputs
 
-* Set of domain validation objects which can be used to complete certificate validation.
+* **Domain-validation-option**: Set of domain validation objects which can be used to complete certificate validation
+* **hostname**: The FQDN of the record
