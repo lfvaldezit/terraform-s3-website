@@ -1,4 +1,4 @@
-# Terraform Module for S3 Static Website + CloudFront
+# S3 static website with Terraform
 
 ## 🏗️ Architecture
 
