@@ -28,7 +28,8 @@
 3. **Set up variables**
 
  ```
- * Copy the contents of terraform.tfvars.example into a new file named terraform.tfvars and adjust the values
+ * Copy the contents of terraform.tfvars.example into a new file named terraform.tfvars 
+   and adjust the values
  * Update variables in locals.tf as needed
  ```
 
@@ -53,7 +54,8 @@ terraform init
  7. **DNS Validation**
 
  ```bash
- * Add the require CNAMEs records in CloudFlare before AWS can issue a validate SSL/TLS certificate for your site
+ * Add the require CNAMEs records in CloudFlare before AWS can issue a validate 
+   SSL/TLS certificate for your site
  ```
 
 8. **Access the website**
