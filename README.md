@@ -129,7 +129,7 @@ terraform init
 
 * **hostname**: The FQDN of the record
 
-##📚 Additional Resources
+## 📚 Additional Resources
 
 * [Terraform AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 * [Terraform module to create AWS ACM resources](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/5.1.0)
