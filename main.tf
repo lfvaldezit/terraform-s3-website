@@ -20,7 +20,7 @@ module "acm" {
   validation_method         = var.validation_method
   subject_alternative_names = ["*.${local.domain_name}"]
   create_route53_records    = var.create_route53_records
-  tags                      = [acm_tags, local.common_tags]
+  tags                      = merge(var.acm_tags, local.common_tags) 
 }
 
 #--------------- CloudFront --------------- #
