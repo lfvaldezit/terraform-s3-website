@@ -2,7 +2,7 @@
 
 variable "bucket_name" {
   description = "The name of the S3 bucket"
-  type        = string 
+  type        = string
 }
 
 variable "s3_tags" {
@@ -27,14 +27,14 @@ variable "acm_tags" {
 }
 
 variable "aliases" {
-  type = set(string)  
+  type = set(string)
 }
 
 #--------------- CloudFlare --------------- #
 
 variable "api_token" {
   description = "Generated API Token to access services and resources "
-  type = string
+  type        = string
 }
 
 variable "zone_id" {

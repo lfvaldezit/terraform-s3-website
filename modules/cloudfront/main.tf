@@ -1,4 +1,7 @@
-
+# 60-second delay
+resource "time_sleep" "wait_60_seconds" {
+  create_duration = "60s"
+}
 
 resource "aws_cloudfront_origin_access_control" "oac" {
   name = var.name-oac
@@ -8,7 +11,7 @@ resource "aws_cloudfront_origin_access_control" "oac" {
 }
 
 resource "aws_cloudfront_distribution" "this" {
-
+    depends_on = [ time_sleep.wait_60_seconds ]
     enabled = true
     
     origin {

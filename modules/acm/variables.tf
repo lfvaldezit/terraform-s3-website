@@ -13,3 +13,7 @@ variable "common_tags" {
 variable "subject_alternative_names" {
   type = set(string)
 }
+
+variable "zone_id" {
+  type = string
+}

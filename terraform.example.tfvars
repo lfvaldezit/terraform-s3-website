@@ -16,12 +16,12 @@ cfn_tags = {
 #--------------- ACM --------------- #
 
 acm_tags = {
-  Default: ""
+  Default : ""
 }
 
 #--------------- CloudFlare --------------- #
 
-api_token = ""
-zone_id   = ""
-record_name      = ""
+api_token   = ""
+zone_id     = ""
+record_name = ""
 
