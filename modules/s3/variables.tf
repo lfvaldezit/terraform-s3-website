@@ -6,11 +6,13 @@ variable "bucket_name" {
 variable "s3_tags" {
     description = "The tag of the S3 bucket"
     type = map(string)
+      default = {}
 }
 
 variable "common_tags" {
     description = "Common tags to apply to all resources"
     type = map(string)
+      default = {}
 }
 
 variable "website_folder" {
