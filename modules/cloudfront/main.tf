@@ -1,7 +1,3 @@
-# 60-second delay
-resource "time_sleep" "wait_60_seconds" {
-  create_duration = "60s"
-}
 
 resource "aws_cloudfront_origin_access_control" "oac" {
   name = var.name-oac
@@ -11,12 +7,11 @@ resource "aws_cloudfront_origin_access_control" "oac" {
 }
 
 resource "aws_cloudfront_distribution" "this" {
-    depends_on = [ time_sleep.wait_60_seconds ]
     enabled = true
     
     origin {
       domain_name = var.domain_name
-      origin_id = local.s3_origin_id
+      origin_id = var.s3_origin_id
       origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
     }
 
@@ -24,7 +19,7 @@ resource "aws_cloudfront_distribution" "this" {
     aliases = var.aliases
 
     default_cache_behavior {
-      target_origin_id = local.s3_origin_id
+      target_origin_id = var.s3_origin_id
       viewer_protocol_policy = "redirect-to-https"
       allowed_methods = [ "GET","HEAD" ]
       cached_methods = [ "GET", "HEAD" ]

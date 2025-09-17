@@ -9,10 +9,12 @@ variable "name-oac" {
 
 variable "common_tags" {
   type = map(string)
+  default = {}
 }
 
 variable "cfn_tags" {
   type = map(string)
+  default = {}
 }
 
 variable "aliases" {
@@ -20,5 +22,9 @@ variable "aliases" {
 }
 
 variable "aws_acm_certificate_arn" {
+  type = string
+}
+
+variable "s3_origin_id" {
   type = string
 }
