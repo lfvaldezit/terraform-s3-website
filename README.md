@@ -28,8 +28,7 @@
 3. **Set up variables**
 
  ```
- Copy the content ofs terraform.tfvars.example
- Create your own terraform.tfvars file and adjust the values
+ Copy the content of terraform.tfvars.example. Create your own terraform.tfvars file and adjust the values
  Update the variables locals.tf as needed
  ```
 
