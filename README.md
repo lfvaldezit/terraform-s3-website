@@ -82,10 +82,6 @@ terraform init
  │        ├── main.tf
  │        ├── variables.tf
  │        └── outputs.tf  
- │   └── acm/ 
- │        ├── main.tf
- │        ├── variables.tf
- │        └── outputs.tf 
  ├── locals.tf                   # Local variables
  ├── variables.tf                # Input variables
  └── terraform.example.tfvars    # Example variables file
@@ -129,12 +125,11 @@ terraform init
 | `aws_region` | AWS Region where the provider will operate | `map(string)` | us-east-1 | **Yes** |
 | `common_tags` | Common tags for all resources | `string` |  | **No** |
 
-
 ## 📊 Outputs
 
-<<<<<<< HEAD
-* **Domain-validation-option**: Set of domain validation objects which can be used to complete certificate validation
 * **hostname**: The FQDN of the record
-=======
-* Set of domain validation objects which can be used to complete certificate validation.
->>>>>>> 6547809b59848f4bf338458fc10683e9e4e22462
+
+##📚 Additional Resources
+
+* [Terraform AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+* [Terraform module to create AWS ACM resources](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/5.1.0)
