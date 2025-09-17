@@ -4,10 +4,10 @@
 
       <img width="700" height="421" alt="image" src="https://github.com/lfvaldezit/terraform-s3-website/blob/main/image.png" />
 
-* **AWS S3**: Storage for static site files
+* **AWS S3**: Store static site files
 * **AWS CloudFront**: Global Content Delivery Network (CDN)
-* **AWS Certificate Manager**: Deploy public SSL/TLS certificate
-* **CloudFlare**: Domain hosting for DNS records
+* **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates
+* **CloudFlare**: Manage DNS records for the domain
 * **IAM Policy**: Grants CloudFront access to S3
 
 ## 🚀 Quick start
@@ -28,8 +28,8 @@
 3. **Set up variables**
 
  ```
- Copy the content of terraform.tfvars.example. Create your own terraform.tfvars file and adjust the values
- Update the variables locals.tf as needed
+ * Copy the contents of terraform.tfvars.example into a new file named terraform.tfvars and adjust the values
+ * Update variables in locals.tf as needed
  ```
 
 4. **Initialize Terraform**
@@ -50,10 +50,16 @@ terraform init
  terraform apply -var-file terraform.tfvars
  ```
 
-7. **Access the website**
+ 7. **DNS Validation**
+
+ ```bash
+ * Add the require CNAMEs records in CloudFlare before AWS can issue a validate SSL/TLS certificate for your site
+ ```
+
+8. **Access the website**
 
  ```
- After deployment, Terraform will output the CloudFront distribution URL
+ After deployment, Terraform will output the FQDN record
   ```
 
 ## 📁 Project Structure
@@ -117,7 +123,7 @@ terraform init
 
 4. **Certificate Manager**
 
-* Go to Additional Resources -> **Terraform module to create AWS ACM resources**
+* Use this module: **Terraform module to create AWS ACM resources** to provision SSL/TLS certificates
 
 5. **Locals**
 
