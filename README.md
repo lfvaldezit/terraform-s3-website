@@ -116,7 +116,11 @@ terraform init
 | `record_name` | The name of the record | `string` | None | **Yes** |
 | `record_content` | The content of the record | `string` | None | **Yes** |
 
-4. **Locals**
+4. **Certificate Manager**
+
+* Go to Additional Resources -> **Terraform module to create AWS ACM resources**
+
+5. **Locals**
 
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
