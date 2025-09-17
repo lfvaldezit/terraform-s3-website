@@ -8,7 +8,7 @@ s3_tags = {
 
 #--------------- CloudFront --------------- #
 
-aliases = [""]
+aliases = [""] # Ex. ["example.com", "www.example.com"]
 cfn_tags = {
   Default = ""
 }
@@ -23,5 +23,5 @@ acm_tags = {
 
 api_token   = ""
 zone_id     = ""
-record_name = ""
+record_name = "" # Ex. "www"
 

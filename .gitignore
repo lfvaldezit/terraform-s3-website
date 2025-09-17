@@ -8,5 +8,3 @@
 terraform.tfvars
 
 .$image.png.bkp
-
-./modules/acm

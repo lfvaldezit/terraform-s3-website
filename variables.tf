@@ -8,6 +8,7 @@ variable "bucket_name" {
 variable "s3_tags" {
   type        = map(string)
   description = "The tags of the S3 bucket"
+  default = {}
 }
 
 variable "website_folder" {
@@ -15,15 +16,29 @@ variable "website_folder" {
   description = "The folder of the website"
 }
 
+#--------------- ACM --------------- #
+
+variable "validation_method" {
+  type    = string
+  default = "DNS"
+}
+
+variable "create_route53_records" {
+  type    = bool
+  default = false
+}
+
+variable "acm_tags" {
+  type = map(string)
+  default = {}
+}
+
 #--------------- CloudFront --------------- #
 
 variable "cfn_tags" {
   type        = map(string)
   description = "The tags of the CloudFront Distribution"
-}
-
-variable "acm_tags" {
-  type = map(string)
+  default = {}
 }
 
 variable "aliases" {

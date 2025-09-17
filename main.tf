@@ -13,13 +13,14 @@ module "s3" {
 # --------------- ACM--------------- #
 
 module "acm" {
-  source = "terraform-aws-modules/acm/aws"
-  version = "5.1.0"
-  domain_name = local.domain_name
-  zone_id = var.zone_id
-  validation_method = "DNS"
+  source                    = "terraform-aws-modules/acm/aws"
+  version                   = "5.1.0"
+  domain_name               = local.domain_name
+  zone_id                   = var.zone_id
+  validation_method         = var.validation_method
   subject_alternative_names = ["*.${local.domain_name}"]
-  create_route53_records = false
+  create_route53_records    = var.create_route53_records
+  tags                      = [acm_tags, local.common_tags]
 }
 
 #--------------- CloudFront --------------- #
@@ -27,13 +28,13 @@ module "acm" {
 module "cfn" {
   source                  = "./modules/cloudfront"
   domain_name             = module.s3.s3_bucket_regional_domain_name
+  s3_origin_id            = module.s3.s3_bucket_regional_domain_name
   name-oac                = "${module.s3.s3_bucket_name}-oac"
   common_tags             = local.common_tags
   cfn_tags                = var.cfn_tags
   aliases                 = ["www.${local.domain_name}", local.domain_name]
   aws_acm_certificate_arn = module.acm.acm_certificate_arn
   depends_on              = [module.acm]
-
 }
 
 #--------------- S3 Bucket Policy --------------- #
