@@ -4,11 +4,11 @@
 
       <img width="700" height="421" alt="image" src="https://github.com/lfvaldezit/terraform-s3-website/blob/main/image.png" />
 
-* **AWS S3**: Store static site files
-* **AWS CloudFront**: Global Content Delivery Network (CDN)
-* **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates
-* **CloudFlare**: Manage DNS records for the domain
-* **IAM Policy**: Grants CloudFront access to S3
+* **AWS S3**: Stores static site files.
+* **AWS CloudFront**: Global Content Delivery Network (CDN).
+* **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates.
+* **CloudFlare**: Manage DNS records for the domain.
+* **IAM Policy**: Grants CloudFront access to S3.
 
 ## 🚀 Quick start
 
@@ -29,8 +29,8 @@
 
  ```
  * Copy the contents of terraform.tfvars.example into a new file named terraform.tfvars 
-   and adjust the values
- * Update variables in locals.tf as needed
+   and adjust the values.
+ * Update variables in locals.tf as needed.
  ```
 
 4. **Initialize Terraform**
@@ -54,8 +54,9 @@ terraform init
  7. **DNS Validation**
 
  ```bash
- * Add the require CNAMEs records in CloudFlare before AWS can issue a validate 
-   SSL/TLS certificate for your site
+ * Add the required CNAME records in CloudFlare before AWS can issue and validate 
+   the SSL/TLS certificate for your site.
+   Go to Additional Resources -> ACM DNS validation for detailed instructions
  ```
 
 8. **Access the website**
@@ -114,7 +115,7 @@ terraform init
 | `cfn_tags` | CloudFront bucket tags | `map(string)` | default | **No** |
 
 
-3. **CloudFlare**
+3. **Cloudflare**
 
 | Variable     | Description                  | Type     | Default     | Required |
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
@@ -133,14 +134,23 @@ terraform init
 | ------------ | ---------------------------- | -------- | ----------- | -------- |
 | `profile` | Allows you to store and manage AWS credentials | `string` | default | **Yes** |
 | `domain_name` | The name of the hosted zone | `string` | example.com | **Yes** |
-| `aws_region` | AWS Region where the provider will operate | `map(string)` | us-east-1 | **Yes** |
+| `aws_region` | AWS Region where the provider will operate | `string` | us-east-1 | **Yes** |
 | `common_tags` | Common tags for all resources | `string` |  | **No** |
 
 ## 📊 Outputs
 
-* **hostname**: The FQDN of the record
+* **hostname**: The FQDN of the deployed site.
+
+## 🧹 Cleanup
+
+**To destroy all resources**
+
+ ```bash
+terraform destroy -var-file terraform.tfvars
+ ```
 
 ## 📚 Additional Resources
 
 * [Terraform AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 * [Terraform module to create AWS ACM resources](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/5.1.0)
+* [ACM DNS validation](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
