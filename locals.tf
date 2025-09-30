@@ -8,5 +8,5 @@ locals {
     ManagedBy : "Terraform"
   }
 
-  domain_name = "example.com"
+  domain_name = "lfvaldez-it.link"
 }
