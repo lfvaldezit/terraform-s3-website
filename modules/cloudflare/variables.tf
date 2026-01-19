@@ -11,7 +11,6 @@ variable "record_name" {
 variable "record_type" {
   description = "The type of the record"
   type = string
-  default = "CNAME"
 }
 
 variable "record_content" {
