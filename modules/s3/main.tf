@@ -1,18 +1,7 @@
 resource "aws_s3_bucket" "this" {
     bucket = var.bucket_name
     force_destroy = true
-    tags = merge(var.common_tags, var.s3_tags)
-}
-
-
-resource "aws_s3_bucket_website_configuration" "this" {
-    bucket = aws_s3_bucket.this.id
-    index_document {
-        suffix = "index.html"
-    }
-    error_document {
-        key = "error.html"
-    }
+    tags = merge({Name = "${var.bucket_name}"},var.common_tags)
 }
 
 resource "aws_s3_bucket_public_access_block" "this" {
