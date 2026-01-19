@@ -1,9 +1,16 @@
-variable "domain_name" {
+variable "sites" {
+  type = map(object({
+    subdomain = string
+    path = optional(string)
+  }))
+}
+
+variable "s3_bucket_domain_name" {
     description = "value"
     type = string
 }
 
-variable "name-oac" {
+variable "domain_name" {
   type = string
 }
 
@@ -17,14 +24,13 @@ variable "cfn_tags" {
   default = {}
 }
 
-variable "aliases" {
-  type = set(string)
-}
-
 variable "aws_acm_certificate_arn" {
   type = string
 }
 
-variable "s3_origin_id" {
+variable "code" {
   type = string
 }
+# variable "function_arn" {
+#   type = string
+# }
