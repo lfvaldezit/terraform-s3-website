@@ -1,5 +1,6 @@
-
-# --------------- S3 Bucket --------------- #
+# ------------------
+# S3 Bucket 
+# ------------------
 
 module "s3" {
   source         = "./modules/s3"
@@ -7,10 +8,11 @@ module "s3" {
   website_folder = var.website_folder
   aws_profile    = local.profile
   common_tags    = local.common_tags
-  s3_tags        = var.s3_tags
 }
 
-# --------------- ACM--------------- #
+# ------------------
+# ACM
+# ------------------
 
 module "acm" {
   source                    = "terraform-aws-modules/acm/aws"
@@ -20,24 +22,69 @@ module "acm" {
   validation_method         = var.validation_method
   subject_alternative_names = ["*.${local.domain_name}"]
   create_route53_records    = var.create_route53_records
-  tags                      = merge(var.acm_tags, local.common_tags) 
+  tags                      = local.common_tags
 }
 
-#--------------- CloudFront --------------- #
+# ------------------
+# CloudFront Function
+# ------------------
+
+# module "cfn-function" {
+#   source                = "./modules/cloudfront-function"
+#   domain_name           = local.domain_name
+#   sites                 = local.sites
+#   s3_bucket_domain_name = module.s3.s3_bucket_regional_domain_name
+# }
+
+# ------------------
+# CloudFront
+# ------------------
 
 module "cfn" {
+  depends_on              = [module.acm, module.s3]
   source                  = "./modules/cloudfront"
-  domain_name             = module.s3.s3_bucket_regional_domain_name
-  s3_origin_id            = module.s3.s3_bucket_regional_domain_name
-  name-oac                = "${module.s3.s3_bucket_name}-oac"
-  common_tags             = local.common_tags
-  cfn_tags                = var.cfn_tags
-  aliases                 = ["www.${local.domain_name}", local.domain_name]
+  domain_name             = local.domain_name
+  sites                   = local.sites
+  s3_bucket_domain_name   = module.s3.s3_bucket_regional_domain_name
   aws_acm_certificate_arn = module.acm.acm_certificate_arn
-  depends_on              = [module.acm]
+  common_tags = local.common_tags
+  code = <<-EOT
+  function handler(event) {
+    var request = event.request;
+    var host = request.headers['host'].value.toLowerCase();
+
+    var prefix = '';
+
+    if (host.startsWith('site-a.')) {
+        prefix = '/site-a';
+    } else if (host.startsWith('site-b.')) {
+        prefix = '/site-b';
+    } else {
+        // Optional: default or return 404 / redirect
+        return {
+            statusCode: 404,
+            statusDescription: 'Not Found'
+        };
+    }
+
+    // Add prefix to URI
+    if (request.uri === '/' || request.uri === '') {
+        request.uri = prefix + '/index.html';
+    } else if (!request.uri.includes('.')) {  // likely SPA route → assume index.html
+        request.uri = prefix + request.uri + (request.uri.endsWith('/') ? '' : '/') + 'index.html';
+    } else {
+        request.uri = prefix + request.uri;
+    }
+
+    // Optional: normalize trailing slash etc.
+    return request;
+  }
+  EOT
 }
 
-#--------------- S3 Bucket Policy --------------- #
+# ------------------
+# S3 Bucket Policy 
+# ------------------
 
 module "iam" {
   source              = "./modules/iam"
@@ -46,11 +93,22 @@ module "iam" {
   cloudfront_dist_arn = module.cfn.cfn_dist_arn
 }
 
-#--------------- CloudFlare Record--------------- #
+# ------------------ 
+# CloudFlare Record
+# ------------------
 
-module "www" {
+module "site-a" {
   source         = "./modules/cloudflare"
   zone_id        = var.zone_id
-  record_name    = var.record_name
+  record_name    = var.record_name_a
+  record_type    = var.record_type
+  record_content = module.cfn.cfn_domain_name
+}
+
+module "site-b" {
+  source         = "./modules/cloudflare"
+  zone_id        = var.zone_id
+  record_name    = var.record_name_b
+  record_type    = var.record_type
   record_content = module.cfn.cfn_domain_name
 }

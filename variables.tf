@@ -5,44 +5,21 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "s3_tags" {
-  type        = map(string)
-  description = "The tags of the S3 bucket"
-  default = {}
-}
-
 variable "website_folder" {
-  type        = string
   description = "The folder of the website"
+  type        = string
 }
 
 #--------------- ACM --------------- #
 
 variable "validation_method" {
-  type    = string
-  default = "DNS"
+  description = "The validation method for the ACM certificate"
+  type        = string
 }
 
 variable "create_route53_records" {
-  type    = bool
-  default = false
-}
-
-variable "acm_tags" {
-  type = map(string)
-  default = {}
-}
-
-#--------------- CloudFront --------------- #
-
-variable "cfn_tags" {
-  type        = map(string)
-  description = "The tags of the CloudFront Distribution"
-  default = {}
-}
-
-variable "aliases" {
-  type = set(string)
+  description = "Whether to create Route 53 records for the ACM certificate"
+  type        = bool
 }
 
 #--------------- CloudFlare --------------- #
@@ -53,9 +30,21 @@ variable "api_token" {
 }
 
 variable "zone_id" {
-  type = string
+  description = "The zone ID for the CloudFlare record"
+  type        = string
 }
 
-variable "record_name" {
-  type = string
+variable "record_name_a" {
+  description = "The name of the record A"
+  type        = string
+}
+
+variable "record_name_b" {
+  description = "The name of the record B"
+  type        = string
+}
+
+variable "record_type" {
+  description = "The type of the record"
+  type        = string
 }
