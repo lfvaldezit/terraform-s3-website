@@ -12,8 +12,6 @@ resource "aws_s3_bucket_public_access_block" "this" {
   restrict_public_buckets = true
 }
 
-# --------------- Upload Static Website --------------- #
-
 resource "null_resource" "upload_website" {  
   provisioner "local-exec" {
     command = "aws s3 cp ${var.website_folder} s3://${aws_s3_bucket.this.id}/ --recursive --profile ${var.aws_profile}"
