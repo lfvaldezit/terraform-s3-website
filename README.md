@@ -1,4 +1,4 @@
-# S3 static website with Terraform
+# Multi-Website hosting with Amazon S3 and CloudFront (OAC)
 
 ## 🏗️ Architecture
 
@@ -9,12 +9,11 @@
 * **AWS CloudFront**: Global Content Delivery Network (CDN).
 * **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates.
 * **CloudFlare**: Manage DNS records for the domain.
-* **IAM Policy**: Grants CloudFront access to S3.
 
 ## 🚀 Quick start
 
 1. **Clone the repository**
-
+ 
  ```bash
  git clone <your-repo-url>
  cd terraform-s3-website
