@@ -2,7 +2,6 @@ locals {
   aliases = [for key, site in var.sites : "${site.subdomain}.${var.domain_name}"]
 }
 
-
 resource "aws_cloudfront_origin_access_control" "this" {
   name = "${var.domain_name}-oac"
   origin_access_control_origin_type = "s3"
@@ -11,49 +10,17 @@ resource "aws_cloudfront_origin_access_control" "this" {
 }
 
 resource "aws_cloudfront_function" "this" {
-  name    = "${var.domain_name}-subdomain-routing"
+  name    = "${replace(var.domain_name, ".", "-")}-subdomain-routing"
   runtime = "cloudfront-js-2.0"
   publish = true
   code = var.code
-  # code = <<-EOT
-  # function handler(event) {
-  #   var request = event.request;
-  #   var host = request.headers['host'].value.toLowerCase();
-
-  #   var prefix = '';
-
-  #   if (host.startsWith('site-a.')) {
-  #       prefix = '/site-a';
-  #   } else if (host.startsWith('site-b.')) {
-  #       prefix = '/site-b';
-  #   } else {
-  #       // Optional: default or return 404 / redirect
-  #       return {
-  #           statusCode: 404,
-  #           statusDescription: 'Not Found'
-  #       };
-  #   }
-
-  #   // Add prefix to URI
-  #   if (request.uri === '/' || request.uri === '') {
-  #       request.uri = prefix + '/index.html';
-  #   } else if (!request.uri.includes('.')) {  // likely SPA route → assume index.html
-  #       request.uri = prefix + request.uri + (request.uri.endsWith('/') ? '' : '/') + 'index.html';
-  #   } else {
-  #       request.uri = prefix + request.uri;
-  #   }
-
-  #   // Optional: normalize trailing slash etc.
-  #   return request;
-  # }
-  # EOT
 }
 
 resource "aws_cloudfront_distribution" "this" {
     enabled = true
     comment = "Multi-site distribution for ${var.domain_name}"
     aliases = local.aliases
-    default_root_object = "index.html"
+    #default_root_object = "index.html"
 
     origin {
         domain_name = var.s3_bucket_domain_name
@@ -62,7 +29,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
     
     default_cache_behavior {
-      viewer_protocol_policy = "redirect-to-https"
+      viewer_protocol_policy = "https-only"
       allowed_methods = ["GET", "HEAD", "OPTIONS"]
       cached_methods = ["GET", "HEAD"]
       target_origin_id = "${var.domain_name}-s3-sites"
@@ -79,25 +46,6 @@ resource "aws_cloudfront_distribution" "this" {
       }
     }
 
-    # dynamic "ordered_cache_behavior" {
-    #   for_each = var.sites
-    #   content {
-    #   path_pattern           = ordered_cache_behavior.value.path
-    #   allowed_methods        = ["GET", "HEAD", "OPTIONS"]
-    #   cached_methods         = ["GET", "HEAD"]
-    #   target_origin_id       = "${var.domain_name}-s3-sites"
-    #   viewer_protocol_policy = "redirect-to-https"
-    #   compress               = true
-
-    #   forwarded_values {
-    #     query_string = false
-    #     cookies {
-    #       forward = "none"
-    #     }
-    #   }
-    #   }                             
-    # }
-
     viewer_certificate {
         cloudfront_default_certificate = false
         acm_certificate_arn = var.aws_acm_certificate_arn
@@ -110,6 +58,5 @@ resource "aws_cloudfront_distribution" "this" {
         restriction_type = "none"
       }
     }
-     tags = merge(var.common_tags, var.cfn_tags)
-
+     tags = merge(var.common_tags)
 }
