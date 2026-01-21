@@ -4,9 +4,9 @@
 
       <img width="700" height="421" alt="image" src="https://raw.githubusercontent.com/lfvaldezit/terraform-s3-website/main/image.png" />
 
-
 * **AWS S3**: Stores static site files.
 * **AWS CloudFront**: Global Content Delivery Network (CDN).
+* **AWS CloudFront Function**: Serverless edge computing feature built directly into CloudFront.
 * **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates.
 * **CloudFlare**: Manage DNS records for the domain.
 
@@ -18,7 +18,7 @@
  git clone <your-repo-url>
  cd terraform-s3-website
  ```
-
+                                                                              
 2. **Configure AWS credentials**
 
  ```bash
