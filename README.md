@@ -2,13 +2,17 @@
 
 ## 🏗️ Architecture
 
-      <img width="700" height="421" alt="image" src="https://raw.githubusercontent.com/lfvaldezit/terraform-s3-website/main/image.png" />
+### Target technology stack
 
 * **AWS S3**: Stores static site files.
 * **AWS CloudFront**: Global Content Delivery Network (CDN).
 * **AWS CloudFront Function**: Routes each subdomain into its folder.
 * **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates.
 * **CloudFlare**: Manage DNS records for the domain.
+
+### Target architecture
+
+      <img width="700" height="421" alt="image" src="https://raw.githubusercontent.com/lfvaldezit/terraform-s3-website/main/image.png" />
 
 ## 🚀 Quick start
 
