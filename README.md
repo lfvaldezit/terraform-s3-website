@@ -1,4 +1,4 @@
-# Multi-Website hosting with Amazon S3 and CloudFront (OAC)
+# Host Multiple Static Websites with Subdomains using S3 + CloudFront (OAC + Function)
 
 ## 🏗️ Architecture
 
@@ -6,7 +6,7 @@
 
 * **AWS S3**: Stores static site files.
 * **AWS CloudFront**: Global Content Delivery Network (CDN).
-* **AWS CloudFront Function**: Serverless edge computing feature built directly into CloudFront.
+* **AWS CloudFront Function**: Routes each subdomain into its folder.
 * **AWS Certificate Manager**: Issues and manages public SSL/TLS certificates.
 * **CloudFlare**: Manage DNS records for the domain.
 
