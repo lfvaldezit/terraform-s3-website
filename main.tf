@@ -26,17 +26,6 @@ module "acm" {
 }
 
 # ------------------
-# CloudFront Function
-# ------------------
-
-# module "cfn-function" {
-#   source                = "./modules/cloudfront-function"
-#   domain_name           = local.domain_name
-#   sites                 = local.sites
-#   s3_bucket_domain_name = module.s3.s3_bucket_regional_domain_name
-# }
-
-# ------------------
 # CloudFront
 # ------------------
 
@@ -44,11 +33,11 @@ module "cfn" {
   depends_on              = [module.acm, module.s3]
   source                  = "./modules/cloudfront"
   domain_name             = local.domain_name
-  sites                   = local.sites
+  sites                   = var.sites
   s3_bucket_domain_name   = module.s3.s3_bucket_regional_domain_name
   aws_acm_certificate_arn = module.acm.acm_certificate_arn
-  common_tags = local.common_tags
-  code = <<-EOT
+  common_tags             = local.common_tags
+  code                    = <<-EOT
   function handler(event) {
     var request = event.request;
     var host = request.headers['host'].value.toLowerCase();
@@ -59,24 +48,16 @@ module "cfn" {
         prefix = '/site-a';
     } else if (host.startsWith('site-b.')) {
         prefix = '/site-b';
-    } else {
-        // Optional: default or return 404 / redirect
-        return {
-            statusCode: 404,
-            statusDescription: 'Not Found'
-        };
-    }
+    } 
 
-    // Add prefix to URI
     if (request.uri === '/' || request.uri === '') {
         request.uri = prefix + '/index.html';
-    } else if (!request.uri.includes('.')) {  // likely SPA route → assume index.html
+    } else if (!request.uri.includes('.')) {
         request.uri = prefix + request.uri + (request.uri.endsWith('/') ? '' : '/') + 'index.html';
     } else {
         request.uri = prefix + request.uri;
     }
 
-    // Optional: normalize trailing slash etc.
     return request;
   }
   EOT
@@ -97,18 +78,10 @@ module "iam" {
 # CloudFlare Record
 # ------------------
 
-module "site-a" {
+module "subdomain" {
   source         = "./modules/cloudflare"
   zone_id        = var.zone_id
-  record_name    = var.record_name_a
-  record_type    = var.record_type
-  record_content = module.cfn.cfn_domain_name
-}
-
-module "site-b" {
-  source         = "./modules/cloudflare"
-  zone_id        = var.zone_id
-  record_name    = var.record_name_b
+  record_name    = var.sites
   record_type    = var.record_type
   record_content = module.cfn.cfn_domain_name
 }

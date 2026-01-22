@@ -1,4 +1,7 @@
-#--------------- S3 Bucket --------------- #
+
+# ------------------
+# S3 BUCKET
+# ------------------
 
 variable "bucket_name" {
   description = "The name of the S3 bucket"
@@ -10,7 +13,9 @@ variable "website_folder" {
   type        = string
 }
 
-#--------------- ACM --------------- #
+# ------------------
+# ACM
+# ------------------
 
 variable "validation_method" {
   description = "The validation method for the ACM certificate"
@@ -22,7 +27,9 @@ variable "create_route53_records" {
   type        = bool
 }
 
-#--------------- CloudFlare --------------- #
+# ------------------
+# Cloudflare
+# ------------------
 
 variable "api_token" {
   description = "Generated API Token to access services and resources "
@@ -34,14 +41,11 @@ variable "zone_id" {
   type        = string
 }
 
-variable "record_name_a" {
-  description = "The name of the record A"
-  type        = string
-}
-
-variable "record_name_b" {
-  description = "The name of the record B"
-  type        = string
+variable "sites" {
+  type = map(object({
+    subdomain = string
+    path      = string
+  }))
 }
 
 variable "record_type" {
