@@ -20,7 +20,6 @@ resource "aws_cloudfront_distribution" "this" {
     enabled = true
     comment = "Multi-site distribution for ${var.domain_name}"
     aliases = local.aliases
-    #default_root_object = "index.html"
 
     origin {
         domain_name = var.s3_bucket_domain_name
