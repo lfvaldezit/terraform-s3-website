@@ -12,7 +12,7 @@
 
 ### Target architecture
 
-      <img width="700" height="421" alt="image" src="https://raw.githubusercontent.com/lfvaldezit/terraform-s3-website/main/image.png" />
+<img width="700" height="421" alt="image" src="https://raw.githubusercontent.com/lfvaldezit/terraform-s3-website/main/image.png" />
 
 ## 🚀 Quick start
 
