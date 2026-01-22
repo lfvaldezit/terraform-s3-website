@@ -1,27 +1,18 @@
-#--------------- S3 Bucket --------------- #
+# ------------------
+# S3 Bucket 
+# ------------------
 
-bucket_name    = ""
+bucket_name    = "example.com"
 website_folder = "static-website/"
-s3_tags = {
-  Default = ""
-}
 
-#--------------- CloudFront --------------- #
+# ------------------
+# ACM
+# ------------------
 
-aliases = [""] # Ex. ["example.com", "www.example.com"]
-cfn_tags = {
-  Default = ""
-}
-
-#--------------- ACM --------------- #
-
-acm_tags = {
-  Default : ""
-}
-
-#--------------- CloudFlare --------------- #
-
-api_token   = ""
-zone_id     = ""
-record_name = "" # Ex. "www"
-
+validation_method      = "DNS"
+create_route53_records = false
+api_token              = ""
+zone_id                = ""
+record_name_a          = "site-a"
+record_name_b          = "site-b"
+record_type            = "CNAME"
