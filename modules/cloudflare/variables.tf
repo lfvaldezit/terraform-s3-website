@@ -3,11 +3,6 @@ variable "zone_id" {
   type = string
 }
 
-variable "record_name" {
-  description = "The name of the record"
-  type = string
-}
-
 variable "record_type" {
   description = "The type of the record"
   type = string
@@ -16,4 +11,12 @@ variable "record_type" {
 variable "record_content" {
   description = "The content of the record"
   type = string
+}
+
+variable "record_name" {
+  description = "The subdomain name of the records"
+  type = map(object({
+    subdomain = string
+    path = optional(string)
+  }))
 }

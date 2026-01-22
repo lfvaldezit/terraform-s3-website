@@ -1,4 +1,4 @@
 output "hostname" {
-    description = "The FQDN of the record"
-  value = cloudflare_record.this.hostname
+  description = "The FQDN of the records"
+  value = { for key, record in cloudflare_record.this : key => record.hostname }
 }
