@@ -5,6 +5,5 @@
 *tfvars.json
 
 .terraform.lock.hcl
-terraform.tfvars
 
 .$image.png.bkp
