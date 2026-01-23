@@ -1,6 +1,5 @@
-
 # ------------------
-# S3 BUCKET
+# S3 Bucket
 # ------------------
 
 variable "bucket_name" {

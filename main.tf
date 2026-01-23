@@ -4,7 +4,7 @@
 
 module "s3" {
   source         = "./modules/s3"
-  bucket_name    = var.bucket_name
+  bucket_name    = "${var.bucket_name}${local.domain_name}"
   website_folder = var.website_folder
   aws_profile    = local.profile
   common_tags    = local.common_tags
@@ -57,7 +57,6 @@ module "cfn" {
     } else {
         request.uri = prefix + request.uri;
     }
-
     return request;
   }
   EOT
