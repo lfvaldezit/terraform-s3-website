@@ -61,7 +61,7 @@ locals {
   profile    = "default"
   aws_region = "us-east-1"
 
-  domain_name = "lfvaldez-it.link"
+  domain_name = "example.com"
 
   common_tags = {
     Owner : "admin"
