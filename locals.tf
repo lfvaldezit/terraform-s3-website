@@ -8,6 +8,6 @@ locals {
     Owner : "admin"
     Environment : "Test"
     ManagedBy : "Terraform"
-    Project : "terraform-multi-sites"
+    Project : "terraform-multi-site"
   }
 }
