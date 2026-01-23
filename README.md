@@ -32,9 +32,45 @@
 3. **Set up variables**
 
  ```
- * Copy the contents of terraform.tfvars.example into a new file named terraform.tfvars 
-   and adjust the values.
- * Update variables in locals.tf as needed.
+ * Adjust the terraform.tfvars & locals.tf variables as needed.
+
+terraform.tfvars
+
+# ------------------
+# S3 Bucket 
+# ------------------
+
+bucket_name    = "terraform-multi-site-"
+website_folder = "static-website/"
+
+# ------------------
+# ACM
+# ------------------
+
+validation_method      = "DNS"
+create_route53_records = false
+api_token              = "your_cloudflare_api_token"
+zone_id                = "your_cloudflare_zone_id"
+record_type            = "CNAME"
+sites = { site-a = { subdomain = "site-a", path = "site-a" }
+site-b = { subdomain = "site-b", path = "site-b" } }
+
+locals.tf
+
+locals {
+  profile    = "default"
+  aws_region = "us-east-1"
+
+  domain_name = "lfvaldez-it.link"
+
+  common_tags = {
+    Owner : "admin"
+    Environment : "Test"
+    ManagedBy : "Terraform"
+    Project : "terraform-website"
+  }
+}
+
  ```
 
 4. **Initialize Terraform**
@@ -58,15 +94,21 @@ terraform init
  7. **DNS Validation**
 
  ```bash
+module.acm.aws_acm_certificate_validation.this[0]: Still creating... [01m00s elapsed]
+module.acm.aws_acm_certificate_validation.this[0]: Still creating... [01m10s elapsed]
+module.acm.aws_acm_certificate_validation.this[0]: Still creating... [01m20s elapsed]
+module.acm.aws_acm_certificate_validation.this[0]: Creation complete after 1m29s [id=0001-01-01 00:00:00 +0000 UTC]
+
  * Add the required CNAME records in CloudFlare before AWS can issue and validate 
    the SSL/TLS certificate for your site.
    Go to Additional Resources -> ACM DNS validation for detailed instructions
+
  ```
 
 8. **Access the website**
 
  ```
- After deployment, Terraform will output the FQDN record
+ After deployment, Terraform will output the FQDN records.
   ```
 
 ## 📁 Project Structure
@@ -76,74 +118,20 @@ terraform init
  ├── outputs.tf                  # Module Outputs
  ├── versions.tf                 # Terraform and provider version constraints
  ├── providers.tf                # AWS provider configuration
- ├── static-site                 # Folder containing static website files
+ ├── static-website              # Folder containing static website files
  ├── modules/                    # Reusable modules
- │   └── cloudfront/            
- │   │   ├── main.tf
- │   │   ├── variables.tf
- │   │   └── outputs.tf     
- │   └── iam/ 
- │   │    ├── main.tf
- │   │    ├── variables.tf
- │   │    └── outputs.tf          
+ │   └── cloudfront/              
+ │   └── iam/          
  │   └── s3/ 
- │        ├── main.tf
- │        ├── variables.tf
- │        └── outputs.tf
- │   └── cloudflare/ 
- │        ├── main.tf
- │        ├── variables.tf
- │        └── outputs.tf  
+ │   └── cloudflare/  
  ├── locals.tf                   # Local variables
  ├── variables.tf                # Input variables
- └── terraform.example.tfvars    # Example variables file
+ └── terraform.tfvars            # Variables file
 ```
-
-## ⚙️ Configuration
-
-### Variables
-
-1. **S3**
-
-| Variable     | Description                  | Type     | Default     | Required |
-| ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `bucket_name` | Globally unique S3 bucket name | `string` | none | **Yes** |
-| `s3_tags` | S3 bucket tags | `map(string)` | default | **No** |
-| `website_folder` | Folder containing the website | `string` | static-website/ | **Yes** |
-
-2. **CloudFront**
-
-| Variable     | Description                  | Type     | Default     | Required |
-| ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `aliases` | Extra CNAMEs (alternate domain names) | `set(string)` | default | **Yes** |
-| `cfn_tags` | CloudFront bucket tags | `map(string)` | default | **No** |
-
-
-3. **Cloudflare**
-
-| Variable     | Description                  | Type     | Default     | Required |
-| ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `api_token`| The API Token for operations | `string` | None | **Yes** |
-| `zone_id` | The zone identifier to target for the resource | `string` | None | **Yes** |
-| `record_name` | The name of the record | `string` | None | **Yes** |
-| `record_content` | The content of the record | `string` | None | **Yes** |
-
-4. **Certificate Manager**
-
-* Use this module: **Terraform module to create AWS ACM resources** to provision SSL/TLS certificates
-
-5. **Locals**
-
-| Variable     | Description                  | Type     | Default     | Required |
-| ------------ | ---------------------------- | -------- | ----------- | -------- |
-| `profile` | Allows you to store and manage AWS credentials | `string` | default | **Yes** |
-| `domain_name` | The name of the hosted zone | `string` | example.com | **Yes** |
-| `aws_region` | AWS Region where the provider will operate | `string` | us-east-1 | **Yes** |
-| `common_tags` | Common tags for all resources | `string` |  | **No** |
 
 ## 📊 Outputs
 
-* **hostname**: The FQDN of the deployed site.
+* **Records**: The FQDN of the deployed sites.
 
 ## 🧹 Cleanup
 
