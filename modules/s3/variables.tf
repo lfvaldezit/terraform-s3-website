@@ -3,11 +3,6 @@ variable "bucket_name" {
     type = string
 }
 
-variable "s3_tags" {
-    description = "The tag of the S3 bucket"
-    type = map(string)
-}
-
 variable "common_tags" {
     description = "Tags to apply to all created AWS resources"
     type = map(string)
