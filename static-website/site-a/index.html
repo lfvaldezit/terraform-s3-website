@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CloudFront Demo — Site A</title>
+  <title>Site A</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-    .card { max-width: 900px; padding: 24px; border: 1px solid #ddd; border-radius: 14px; }
-    code { background:#f6f8fa; padding:2px 6px; border-radius:6px; }
-    .tag { display:inline-block; padding:6px 10px; background:#eef6ff; border:1px solid #cfe6ff; border-radius:999px; margin-right:8px; }
-    footer { margin-top: 20px; color:#666; font-size: 0.95rem; }
+    body { font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif; margin: 40px; }
+    header { margin-bottom: 18px; }
+    .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .box { border: 1px solid #ddd; border-radius: 14px; padding: 18px; }
+    .muted { color: #666; }
+    .pill { display:inline-block; padding:6px 10px; background:#f7f7f7; border:1px solid #e5e5e5; border-radius:999px; }
+    .ok { color: #0a7a2f; font-weight: 600; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>🚀 CloudFront Demo — Site A</h1>
-  </div>
-
+  <header>
+    <h1>🚀 Static Website — Site A</h1>
+    </div>
+  </section>
   <script>
     document.getElementById("ts").textContent = new Date().toISOString();
   </script>
