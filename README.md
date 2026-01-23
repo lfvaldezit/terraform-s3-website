@@ -34,7 +34,8 @@
  ```
  * Adjust the terraform.tfvars & locals.tf variables as needed.
 
-terraform.tfvars
+terraform.tfvars file
+---------------------
 
 # ------------------
 # S3 Bucket 
@@ -55,7 +56,8 @@ record_type            = "CNAME"
 sites = { site-a = { subdomain = "site-a", path = "site-a" }
 site-b = { subdomain = "site-b", path = "site-b" } }
 
-locals.tf
+locals.tf file
+---------------
 
 locals {
   profile    = "default"
@@ -97,11 +99,12 @@ terraform init
 module.acm.aws_acm_certificate_validation.this[0]: Still creating... [01m00s elapsed]
 module.acm.aws_acm_certificate_validation.this[0]: Still creating... [01m10s elapsed]
 module.acm.aws_acm_certificate_validation.this[0]: Still creating... [01m20s elapsed]
+
+Add the required CNAME records in CloudFlare before AWS can issue and validate 
+the SSL/TLS certificate for your site.
+
 module.acm.aws_acm_certificate_validation.this[0]: Creation complete after 1m29s [id=0001-01-01 00:00:00 +0000 UTC]
 
- * Add the required CNAME records in CloudFlare before AWS can issue and validate 
-   the SSL/TLS certificate for your site.
-   Go to Additional Resources -> ACM DNS validation for detailed instructions
 
  ```
 
@@ -114,24 +117,21 @@ module.acm.aws_acm_certificate_validation.this[0]: Creation complete after 1m29s
 ## 📁 Project Structure
 
 ```
- ├── main.tf                     # Root configuration calling modules
- ├── outputs.tf                  # Module Outputs
- ├── versions.tf                 # Terraform and provider version constraints
- ├── providers.tf                # AWS provider configuration
- ├── static-website              # Folder containing static website files
- ├── modules/                    # Reusable modules
- │   └── cloudfront/              
- │   └── iam/          
- │   └── s3/ 
- │   └── cloudflare/  
- ├── locals.tf                   # Local variables
- ├── variables.tf                # Input variables
- └── terraform.tfvars            # Variables file
+ ├── static-website/              
+ ├── modules/                   
+ │   └── cloudflare/              
+ │   └── cloudfront/          
+ │   └── iam/ 
+ │   └── s3/  
+ ├── main.tf                     
+ ├── outputs.tf                  
+ ├── versions.tf                
+ ├── providers.tf               
+ ├── locals.tf                   
+ ├── variables.tf                
+ ├── terraform.tfvars           
+ └── README.md
 ```
-
-## 📊 Outputs
-
-* **Records**: The FQDN of the deployed sites.
 
 ## 🧹 Cleanup
 
