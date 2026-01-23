@@ -77,7 +77,7 @@ module "iam" {
 # CloudFlare Record
 # ------------------
 
-module "subdomain" {
+module "records" {
   source         = "./modules/cloudflare"
   zone_id        = var.zone_id
   record_name    = var.sites

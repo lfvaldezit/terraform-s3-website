@@ -1,4 +1,4 @@
 
 output "Records" {
-  value = module.subdomain.hostname
+  value = module.records.hostname
 }
