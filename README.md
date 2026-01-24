@@ -32,7 +32,7 @@
 3. **Set up variables**
 
  ```
- * Adjust the terraform.tfvars & locals.tf variables as needed.
+ Adjust the terraform.tfvars & locals.tf variables as needed.
 
 terraform.tfvars file
 ---------------------
@@ -69,7 +69,7 @@ locals {
     Owner : "admin"
     Environment : "Test"
     ManagedBy : "Terraform"
-    Project : "terraform-website"
+    Project : "terraform-multi-site"
   }
 }
 
