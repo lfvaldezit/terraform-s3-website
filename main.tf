@@ -48,7 +48,7 @@ module "cfn" {
         prefix = '/site-a';
     } else if (host.startsWith('site-b.')) {
         prefix = '/site-b';
-    } 
+    }
 
     if (request.uri === '/' || request.uri === '') {
         request.uri = prefix + '/index.html';
